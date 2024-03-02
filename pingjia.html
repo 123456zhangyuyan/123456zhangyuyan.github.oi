@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发表感想</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.5/lottie.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(255, 240, 164);
+        }
+
+        header {
+            background-color: #c99934;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 20px auto;
+            height: 800px;
+            width: 100%;
+        }
+
+        input[type="text"] {
+            width: 70%;
+            padding: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .delete {
+            color: red;
+            cursor: pointer;
+            position: absolute;
+            right: 5px;
+            display: none;
+        }
+
+        li:hover .delete {
+            display: inline;
+        }
+
+
+
+        nav {
+            background-color: #deb556;
+            padding: 10px 0;
+            position: fixed;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer {
+            background-color: #c99934;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 0px;
+        }
+
+        #lottie-animation1 {
+            position: absolute;
+            top: 20px;
+            left: 15%;
+            width: 120px;
+            height: 120px;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>《飞驰人生2》</h1>
+        <div id="lottie-animation1"></div>
+    </header>
+
+    <section id="hero">
+        <nav>
+            <ul>
+                <li><a href="../首页/home.html">首页</a></li>
+                <li><a href="../信息页/message1.html">剧情简介</a></li>
+                <li><a href="../成员介绍/member.html">演员介绍</a></li>
+                <li><a href="../发表感想/pingjia.html">发表感想</a></li>
+            </ul>
+        </nav>
+    </section>
+    <div class="container">
+        <h2>发表一条观后感想吧~</h2>
+        <input type="text" id="taskInput" placeholder="添加一条感想">
+        <button onclick="addTask()">添加</button>
+        <ul id="taskList">
+        </ul>
+    </div>
+    <footer>
+        <p>&copy; 2024春节档《飞驰人生2》电影介绍</p>
+    </footer>
+
+    <script>
+        function addTask() {
+            var taskInput = document.getElementById("taskInput");
+            var taskList = document.getElementById("taskList");
+            var taskText = taskInput.value.trim();
+
+            if (taskText !== "") {
+                var li = document.createElement("li");
+                li.textContent = taskText;
+
+                var deleteButton = document.createElement("span");
+                deleteButton.textContent = " ❌删除";
+                deleteButton.className = "delete";
+                deleteButton.onclick = function () {
+                    li.remove();
+                };
+
+                li.appendChild(deleteButton);
+                taskList.appendChild(li);
+                taskInput.value = "";
+            }
+        }
+        let slideIndex = 0;
+        var animation1 = bodymovin.loadAnimation({
+            container: document.getElementById('lottie-animation1'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'https://lottie.host/0e7fb958-2fd4-4dcb-942d-ec37312be172/oju9U1fS9B.json'
+        });
+    </script>
+
+</body>
+
+</html>
